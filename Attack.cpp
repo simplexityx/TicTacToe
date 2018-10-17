@@ -11,7 +11,6 @@ AttackState::AttackState(Board *b) {
 int possibleToWin(Board *b, int prev) {
 
 	for (int i = 0; i < BOARD_SIZE; i++) {
-
 		switch (i) {
 		case 0:
 			if (b->board[i] == 'O') {
@@ -167,184 +166,189 @@ int blockPlayerWin(Board *b) {
 		if (b->board[i] == 'X') {
 			switch (i) {
 
-			case 0:
-				if (b->board[i + 1] == 'X')
-					if(b->board[i + 2] == 0)
-						return i + 2;
-				if (b->board[i + 2] == 'X') {
-					if (b->board[i + 1] == 0)
-						return i + 1;
-				}
-				if (b->board[i + 3] == 'X')
-					if (b->board[i + 6] == 0)
-						return i + 6;
-				if (b->board[i + 6] == 'X')
-					if (b->board[i + 3] == 0)
-						return i + 3;
+				case 0:
+					if (b->board[i + 1] == 'X')
+						if(b->board[i + 2] == 0)
+							return i + 2;
+					if (b->board[i + 2] == 'X') {
+						if (b->board[i + 1] == 0)
+							return i + 1;
+					}
+					if (b->board[i + 3] == 'X')
+						if (b->board[i + 6] == 0)
+							return i + 6;
+					if (b->board[i + 6] == 'X')
+						if (b->board[i + 3] == 0)
+							return i + 3;
 
-				if (b->board[i + 4] == 'X')
-					if (b->board[i + 8] == 0)
-						return i + 8;
-				if (b->board[i + 8] == 'X')
-					if (b->board[i + 4] == 0)
-						return i + 4;
-				break;
-			case 1:
-				if (b->board[i + 1] == 'X')
-					if (b->board[i - 1] == 0)
-						return i  - 1;
-				if (b->board[i - 1] == 'X') {
-					if (b->board[i + 1] == 0)
-						return i + 1;
-				}
-				if (b->board[i + 3] == 'X')
-					if (b->board[i + 6] == 0)
-						return i + 6;
+					if (b->board[i + 4] == 'X')
+						if (b->board[i + 8] == 0)
+							return i + 8;
+					if (b->board[i + 8] == 'X')
+						if (b->board[i + 4] == 0)
+							return i + 4;
+					break;
+				case 1:
+					if (b->board[i + 1] == 'X')
+						if (b->board[i - 1] == 0)
+							return i  - 1;
+					if (b->board[i - 1] == 'X') {
+						if (b->board[i + 1] == 0)
+							return i + 1;
+					}
+					if (b->board[i + 3] == 'X')
+						if (b->board[i + 6] == 0)
+							return i + 6;
 
-				break;
+					break;
 
-			case 2:
-				if (b->board[i - 1] == 'X')
-					if (b->board[i - 2] == 0)
-						return i - 2;
-				if (b->board[i + 3] == 'X')
-					if (b->board[i + 6] == 0)
-						return i + 6;
-				if (b->board[i + 6] == 'X')
-					if (b->board[i + 3] == 0)
-						return i + 3;
-				if (b->board[i + 2] == 'X')
-					if (b->board[i + 4] == 0)
-						return i + 4;
-				if (b->board[i + 4] == 'X')
-					if (b->board[i + 2] == 0)
-						return i + 2;
-				break;
+				case 2:
+					if (b->board[i - 1] == 'X')
+						if (b->board[i - 2] == 0)
+							return i - 2;
+					if (b->board[i + 3] == 'X')
+						if (b->board[i + 6] == 0)
+							return i + 6;
+					if (b->board[i + 6] == 'X')
+						if (b->board[i + 3] == 0)
+							return i + 3;
+					if (b->board[i + 2] == 'X')
+						if (b->board[i + 4] == 0)
+							return i + 4;
+					if (b->board[i + 4] == 'X')
+						if (b->board[i + 2] == 0)
+							return i + 2;
+					break;
 
-			case 3:
-				if (b->board[i + 1] == 'X')
-					if (b->board[i + 2] == 0)
-						return i + 2;
-				if (b->board[i + 2] == 'X')
-					if (b->board[i + 1] == 0)
-						return i + 1;
-				if (b->board[i + 3] == 'X') {
-					if (b->board[i - 3] == 0)
-						return i - 3;
-				}
-				if (b->board[i - 3] == 'X')
-					if (b->board[i + 3] == 0)
-						return i + 3;
-				break;
+				case 3:
+					if (b->board[i + 1] == 'X')
+						if (b->board[i + 2] == 0)
+							return i + 2;
+					if (b->board[i + 2] == 'X')
+						if (b->board[i + 1] == 0)
+							return i + 1;
+					if (b->board[i + 3] == 'X') {
+						if (b->board[i - 3] == 0)
+							return i - 3;
+					}
+					if (b->board[i - 3] == 'X')
+						if (b->board[i + 3] == 0)
+							return i + 3;
+					break;
 
-			case 4:
-				if (b->board[i + 1] == 'X')
-					if (b->board[i - 1] == 0)
-					return i - 1;
-				if (b->board[i - 1] == 'X')
-					if (b->board[i + 1] == 0)
-					return i + 1;
-				if (b->board[i + 3] == 'X') {
-					if (b->board[i - 3] == 0)
-					return i - 3;
-				}
-				if (b->board[i - 3] == 'X')
-					if (b->board[i + 3] == 0)
-					return i + 3;
-				if (b->board[i + 4] == 'X')
-					if (b->board[i - 4] == 0)
-					return i - 4;
-				if (b->board[i - 4] == 'X')
-					if (b->board[i + 4] == 0)
-					return i + 4;
-				if (b->board[i + 2] == 'X')
-					if (b->board[i - 2] == 0)
-					return i - 2;
-				if (b->board[i - 2] == 'X')
-					if (b->board[i + 2] == 0)
-					return i + 2;
-				break;
-
-			case 5:
-				if (b->board[i - 1] == 'X')
-					if (b->board[i - 2] == 0)
-					return i - 2;
-				if (b->board[i - 2] == 'X')
-					if (b->board[i - 1] == 0)
+				case 4:
+					if (b->board[i + 1] == 'X')
+						if (b->board[i - 1] == 0)
 						return i - 1;
-				if (b->board[i + 3] == 'X') {
-					if (b->board[i - 3] == 0)
-					return i - 3;
-				}
-				if (b->board[i - 3] == 'X')
-					if (b->board[i + 3] == 0)
-					return i + 3;
-				break;
-
-			case 6:
-				if (b->board[i + 1] == 'X')
-					if (b->board[i + 2] == 0)
-						return i + 2;
-				if (b->board[i + 2] == 'X') {
-					if (b->board[i + 1] == 0)
+					if (b->board[i - 1] == 'X')
+						if (b->board[i + 1] == 0)
 						return i + 1;
-				}
+					if (b->board[i + 3] == 'X') {
+						if (b->board[i - 3] == 0)
+						return i - 3;
+					}
+					if (b->board[i - 3] == 'X')
+						if (b->board[i + 3] == 0)
+						return i + 3;
+					if (b->board[i + 4] == 'X')
+						if (b->board[i - 4] == 0)
+						return i - 4;
+					if (b->board[i - 4] == 'X')
+						if (b->board[i + 4] == 0)
+						return i + 4;
+					if (b->board[i + 2] == 'X')
+						if (b->board[i - 2] == 0)
+						return i - 2;
+					if (b->board[i - 2] == 'X')
+						if (b->board[i + 2] == 0)
+						return i + 2;
+					break;
+
+				case 5:
+					if (b->board[i - 1] == 'X')
+						if (b->board[i - 2] == 0)
+						return i - 2;
+					if (b->board[i - 2] == 'X')
+						if (b->board[i - 1] == 0)
+							return i - 1;
+					if (b->board[i + 3] == 'X') {
+						if (b->board[i - 3] == 0)
+						return i - 3;
+					}
+					if (b->board[i - 3] == 'X')
+						if (b->board[i + 3] == 0)
+						return i + 3;
+
+					break;
+
+				case 6:
+					if(b->board[i - 1] == 'X'){
+						return 8;
+					}
+
+					if (b->board[i + 1] == 'X')
+						if (b->board[i + 2] == 0)
+							return i + 2;
+					if (b->board[i + 2] == 'X') {
+						if (b->board[i + 1] == 0)
+							return i + 1;
+					}
+						
+					if (b->board[i - 3] == 'X')
+						if (b->board[i - 6] == 0)
+						return i - 6;
+					if (b->board[i - 6] == 'X')
+						if (b->board[i - 3] == 0)
+							return i - 3;
+
+					if (b->board[i - 2] == 'X')
+						if (b->board[i - 4 ] == 0)
+						return i - 4;
+
+					if (b->board[i - 4] == 'X')
+						if (b->board[i - 2] == 0)
+							return i - 2;
+					break;
+
+
+				case 7:
+					if (b->board[i + 1] == 'X')
+						if (b->board[i - 1] == 0)
+						return i - 1;
+					if (b->board[i - 1] == 'X') {
+						if (b->board[i + 1] == 0)
+						return i + 1;
+					}
+					if (b->board[i - 3] == 'X')
+						if (b->board[i - 6] == 0)
+						return i - 6;
+					if (b->board[i - 6] == 'X')
+						if (b->board[i - 3] == 0)
+							return i - 3;
+					break;
+
+				case 8:
+					if (b->board[i - 1] == 'X')
+						if (b->board[i - 2] == 0)
+						return i - 2;
+					if (b->board[i - 2] == 'X')
+						if (b->board[i - 1] == 0)
+							return i - 1;
+					if (b->board[i - 3] == 'X')
+						if (b->board[i - 6] == 0)
+						return i - 6;
+					if (b->board[i - 6] == 'X')
+						if (b->board[i - 3] == 0)
+							return i - 3;
+					if (b->board[i - 4] == 'X')
+						if (b->board[i - 8] == 0)
+						return i - 8;
+					if (b->board[i - 8] == 'X')
+						if (b->board[i - 4] == 0)
+							return i - 4
+							;
 					
-				if (b->board[i - 3] == 'X')
-					if (b->board[i - 6] == 0)
-					return i - 6;
-				if (b->board[i - 6] == 'X')
-					if (b->board[i - 3] == 0)
-						return i - 3;
-
-				if (b->board[i - 2] == 'X')
-					if (b->board[i - 4 ] == 0)
-					return i - 4;
-
-				if (b->board[i - 4] == 'X')
-					if (b->board[i - 2] == 0)
-						return i - 2;
-				break;
-
-
-			case 7:
-				if (b->board[i + 1] == 'X')
-					if (b->board[i - 1] == 0)
-					return i - 1;
-				if (b->board[i - 1] == 'X') {
-					if (b->board[i + 1] == 0)
-					return i + 1;
-				}
-				if (b->board[i - 3] == 'X')
-					if (b->board[i - 6] == 0)
-					return i - 6;
-				if (b->board[i - 6] == 'X')
-					if (b->board[i - 3] == 0)
-						return i - 3;
-				break;
-
-			case 8:
-				if (b->board[i - 1] == 'X')
-					if (b->board[i - 2] == 0)
-					return i - 2;
-				if (b->board[i - 2] == 'X')
-					if (b->board[i - 1] == 0)
-						return i - 1;
-				if (b->board[i - 3] == 'X')
-					if (b->board[i - 6] == 0)
-					return i - 6;
-				if (b->board[i - 6] == 'X')
-					if (b->board[i - 3] == 0)
-						return i - 3;
-				if (b->board[i - 4] == 'X')
-					if (b->board[i - 8] == 0)
-					return i - 8;
-				if (b->board[i - 8] == 'X')
-					if (b->board[i - 4] == 0)
-						return i - 4
-						;
-				
-				break;
+					break;
 
 			}
 			
