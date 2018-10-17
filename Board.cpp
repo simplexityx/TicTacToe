@@ -18,7 +18,7 @@ void Board::printBoard() {
 	for (int i = 0; i < BOARD_SIZE; i++) {
 		if (i % 3 == 0)
 			std::cout << "\n";
-		std::cout << board[i] << ",";
+		std::cout << "|" << board[i] << "\t";
 	}
 	std::cout << "\n";
 }
@@ -86,13 +86,13 @@ int Board::checkWin(char mark, int placement) {
 	}
 
 
-	//skrå høyre til venstre
+	//skrï¿½ hï¿½yre til venstre
 	if (placement == 0 || placement == 4 || placement == 8) {
 		if (check(placement, LEFTDIAGONAL, mark) == 1) {
 			return 1;
 		}
 	}
-	//skrå venstre til høyre
+	//skrï¿½ venstre til hï¿½yre
 	if (placement == 6 || placement == 4 || placement == 2) {
 		
 		if (board[6] == mark && board[2] == mark && board[4] == mark) {
