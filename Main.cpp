@@ -1,5 +1,4 @@
 #include "Game.h"
-#include <conio.h>
 #include <iostream>
 Game *g;
 
@@ -18,6 +17,5 @@ int main() {
 		}
 
 	}
-	_getch();
 	return 0;
 }

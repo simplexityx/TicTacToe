@@ -14,7 +14,8 @@ int checkIfFirstMove(Board *b){
 			count++;
 	}
 	if(count < 1)
-		return 4;
+		if (b->board[1] == 'X' || b->board[3] == 'X' || b->board[5] == 'X' || b->board[7] == 'X')
+			return 4;
 	else
 		return -1;
 }
