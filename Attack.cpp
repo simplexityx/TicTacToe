@@ -14,10 +14,10 @@ int checkIfFirstMove(Board *b){
 			count++;
 	}
 	if(count < 1)
-		if (b->board[1] == 'X' || b->board[3] == 'X' || b->board[5] == 'X' || b->board[7] == 'X')
+		if ((b->board[1] == 'X' || b->board[3] == 'X' || b->board[5] == 'X' || b->board[7] == 'X') && b->board[4] == 0)
 			return 4;
-	else
-		return -1;
+	
+	return -1;
 }
 
 
@@ -98,9 +98,9 @@ int possibleToWin(Board *b, int prev) {
 					return i + 1;
 				else if (b->board[i - 3] == 'O' && b->board[i + 3] == 0)
 					return i + 3;
-				else if (b->board[i - 4] == 'O' && b->board[i + 4] == 0)
+				else if (b->board[i - 4] == 'O' && b->board[i + 4] == 0){
 					return i + 4;
-				else if (b->board[i + 2] == 'O' && b->board[i - 2] == 0)
+				}else if (b->board[i + 2] == 'O' && b->board[i - 2] == 0)
 					return i - 2;
 				else if (b->board[i - 2] == 'O' && b->board[i + 2] == 0)
 					return i + 2;
@@ -380,6 +380,18 @@ int checkCorners(Board *b) {
 			return 4;
 	}
 
+	if((b->board[0] == 0 && b->board[1] == 'X' || b->board[0] == 0 && b->board[3] == 'X'))
+		return 0;  
+
+	if(b->board[2] == 0 && b->board[1] == 'X' || b->board[0] == 0 && b->board[5] == 'X')
+		return 2;
+	
+	if(b->board[6] == 0 && b->board[3] == 'X' || b->board[0] == 0 && b->board[7] == 'X')
+		return 6;
+		
+	if(b->board[8] == 0 && b->board[5] == 'X' || b->board[0] == 0 && b->board[7] == 'X')
+		return 8;
+
 	if (b->board[0] == 0) {
 		return 0;
 	}
@@ -444,11 +456,10 @@ int findRandom(Board *b) {
 int AttackState::nextMove(Board *b) {
 	board = b;
 	int next = 0;
-		
 	next = checkIfFirstMove(b);
 	if (next != -1)
-		goto endTurn;
-
+		goto endTurn;	
+	
 	next = possibleToWin(b, previous);
 	if (next != -1)
 		goto endTurn;
