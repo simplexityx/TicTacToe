@@ -7,6 +7,20 @@ AttackState::AttackState(Board *b) {
 	previous = 0;
 }
 
+int checkIfFirstMove(Board *b){
+	int count = 0;
+	for(int i = 0; i < BOARD_SIZE; i++){
+		if(b->board[i] == 'O')
+			count++;
+	}
+	if(count < 1)
+		return 4;
+	else
+		return -1;
+}
+
+
+
 
 int possibleToWin(Board *b, int prev) {
 
@@ -282,9 +296,7 @@ int blockPlayerWin(Board *b) {
 					break;
 
 				case 6:
-					if(b->board[i - 1] == 'X'){
-						return 8;
-					}
+					
 
 					if (b->board[i + 1] == 'X')
 						if (b->board[i + 2] == 0)
@@ -432,30 +444,34 @@ int AttackState::nextMove(Board *b) {
 	board = b;
 	int next = 0;
 		
-		next = possibleToWin(b, previous);
-		if (next != -1)
-			goto endTurn;
+	next = checkIfFirstMove(b);
+	if (next != -1)
+		goto endTurn;
 
-		next = blockPlayerWin(b);
-		if (next != -1)
-			goto endTurn;
+	next = possibleToWin(b, previous);
+	if (next != -1)
+		goto endTurn;
 
-		next = checkCorners(b);
-		if (next != -1)
-			goto endTurn;
+	next = blockPlayerWin(b);
+	if (next != -1)
+		goto endTurn;
 
-		if (board->board[4] == 0) {
-			next = 4;
-			goto endTurn;
-		}
-		
-		next = marknextToPrev(b, previous);
-		if (next != -1)
-			goto endTurn;
+	next = checkCorners(b);
+	if (next != -1)
+		goto endTurn;
 
-		next = findRandom(b);
-		if (next != -1)
-			goto endTurn;
+	if (board->board[4] == 0) {
+		next = 4;
+		goto endTurn;
+	}
+	
+	next = marknextToPrev(b, previous);
+	if (next != -1)
+		goto endTurn;
+
+	next = findRandom(b);
+	if (next != -1)
+		goto endTurn;
 
 	endTurn:
 		std::cout << next << std::endl;
